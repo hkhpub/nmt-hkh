@@ -1,0 +1,17 @@
+코퍼스: iwslt15 zh-en
+----------------------
+Vocabulary size: 30000
+
+Hit rate:
+train.zh:   98.30%                  (99.23% for size 50000)
+dev.zh:     93.98%                  (94.95% for size 50000)
+test.zh:    95.04%                  (95.86% for size 50000)
+
+train.en:   98.90%                  (99.60% for size 50000)
+dev.en:     83.56%                  (84.10% for size 50000)
+test.en:    80.64%                  (80.86% for size 50000)
+
+train.en:   96.20%                  (bpe encoding applied)
+dev.en:     92.47%                  (bpe encoding applied)
+test.en:    95.05%                  (bpe encoding applied)
+

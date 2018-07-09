@@ -32,8 +32,20 @@ def evaluate(ref_file, trans_file, metric, subword_option=None):
   """Pick a metric and evaluate depending on task."""
   # BLEU scores for translation task
   if metric.lower() == "bleu":
-    evaluation_score = _bleu(ref_file, trans_file,
-                             subword_option=subword_option)
+    evaluation_score = _bleu(ref_file, trans_file, max_order=4, subword_option=subword_option)
+
+  elif metric.lower() == "bleu1":
+    evaluation_score = _bleu(ref_file, trans_file, max_order=1, subword_option=subword_option)
+
+  elif metric.lower() == "bleu2":
+    evaluation_score = _bleu(ref_file, trans_file, max_order=2, subword_option=subword_option)
+
+  elif metric.lower() == "bleu3":
+    evaluation_score = _bleu(ref_file, trans_file, max_order=3, subword_option=subword_option)
+
+  elif metric.lower() == "bleu4":
+    evaluation_score = _bleu(ref_file, trans_file, max_order=4, subword_option=subword_option)
+
   # ROUGE scores for summarization tasks
   elif metric.lower() == "rouge":
     evaluation_score = _rouge(ref_file, trans_file,
@@ -64,9 +76,8 @@ def _clean(sentence, subword_option):
 
 
 # Follow //transconsole/localization/machine_translation/metrics/bleu_calc.py
-def _bleu(ref_file, trans_file, subword_option=None):
+def _bleu(ref_file, trans_file, max_order=4, subword_option=None):
   """Compute BLEU scores and handling BPE."""
-  max_order = 4
   smooth = False
 
   ref_files = [ref_file]
